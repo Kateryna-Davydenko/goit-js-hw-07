@@ -1,0 +1,9 @@
+.gallery {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.gallery li {
+  margin: 5px;
+}
