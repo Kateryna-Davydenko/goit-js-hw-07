@@ -4,21 +4,21 @@ document.querySelector("form").addEventListener("submit", function (event) {
   event.preventDefault();
 
   let inputs = document.querySelectorAll("input");
-  let formData = {};
+  let formValues = {};
+  let isFormValid = true;
 
-  inputs.forEach((input) => {
-    let key = input.name;
-    let value = input.value.trim();
-    formData[key] = value;
-
-    if (value.trim() === "") {
+  inputs.forEach(function (input) {
+    if (input.value.trim() === "") {
+      isFormValid = false;
       alert("All form fields must be filled in");
     }
+    formValues[input.name] = input.value.trim();
   });
 
-  console.log(formData);
-
-  inputs.forEach((input) => {
-    input.value = "";
-  });
+  if (isFormValid) {
+    console.log(formValues);
+    inputs.forEach(function (input) {
+      input.value = "";
+    });
+  }
 });

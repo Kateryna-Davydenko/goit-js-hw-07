@@ -1,4 +1,5 @@
 "use strict";
+
 const images = [
   {
     url: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?dpr=2&h=750&w=1260",
@@ -26,13 +27,16 @@ const images = [
   },
 ];
 
-const createAllImg = document.querySelector("ul.gallery");
-const createImages = images
-  .map((image) => {
-    return `<li class="gallery-item">
-  <img class="gallery-item-img" src="${image.url}" alt="${image.alt}">
-  </li>`;
-  })
-  .join("");
+const galleryList = document.querySelector(".gallery");
+const fragment = document.createDocumentFragment();
 
-createAllImg.insertAdjacentHTML("beforeend", createImages);
+images.slice(0, 6).forEach((image) => {
+  const listItem = document.createElement("li");
+  const img = document.createElement("img");
+  img.src = image.url;
+  img.alt = image.alt;
+  listItem.appendChild(img);
+  fragment.appendChild(listItem);
+});
+
+galleryList.appendChild(fragment);

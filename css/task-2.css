@@ -1,9 +1,14 @@
 .gallery {
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
   padding: 0;
 }
 
 .gallery li {
   margin: 5px;
+}
+
+.gallery img {
+  width: 380px;
 }
